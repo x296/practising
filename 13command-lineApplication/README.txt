@@ -1,0 +1,1 @@
+Python is great for building command-line applications. You can build a nice CLI interface through which you can send email to other people. It will ask the user for credentials and the data it needs to send and then we can send the data using a command line.

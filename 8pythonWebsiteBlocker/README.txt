@@ -1,0 +1,1 @@
+Build an application that can be used to block certain websites from opening. This is a very helpful program for students who want to focus on studies and don’t want any other distractions like social media.

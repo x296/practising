@@ -1,0 +1,1 @@
+A web crawler is an automated program script that browses the world-wide-web and it can look and store the contents of the webpage. This process is called web crawling. The search engines like Google use this technique to find up to date information. Make sure to use the multithreading concept.

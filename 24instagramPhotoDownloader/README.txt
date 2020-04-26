@@ -1,0 +1,1 @@
+The Instagram photo downloader project is used to download all the Instagram images of your friends. It will use your credentials to access your account and then search your friends to download their photos.

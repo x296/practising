@@ -1,0 +1,1 @@
+There are lots of information and articles on the internet. Finding good relevant content is hard so a content aggregator automatically searched the popular websites, looks for the relevant content and creates a list for you to browse the content. The user can select which content they want to look or not.

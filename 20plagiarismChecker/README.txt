@@ -1,0 +1,1 @@
+The idea behind this project is to build a GUI application that you can use to check for plagiarism. To build this project, you need to use a natural language processing library along with the Google search API that will fetch top articles to you.

@@ -1,0 +1,1 @@
+The project is used to get a random article from Wikipedia and then we ask the user if he wants to read the article or not. If the answer is yes then we show the article otherwise we fetch another random article.

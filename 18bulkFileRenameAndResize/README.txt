@@ -1,0 +1,1 @@
+Machine learning tasks include preprocessing of the data. We need to perform resize and rename images in bulk, so an application that can handle these tasks automatically will be very helpful for machine learning practitioners.

@@ -1,0 +1,1 @@
+Build a file explorer and manager app through which you can explore the files in your system, manage, search and copy-paste them to different locations. This project will use a lot of knowledge on various concepts of Python programming language.
