@@ -18,6 +18,23 @@ root.geometry('400x400')
 # 		zipcode integer
 # 		)""")
 
+# Create function to delete record
+def delete():
+	# Create or connect
+	connection = sqlite3.connect('files/address_book.db')
+
+	# Create cursor
+	c = connection.cursor()
+
+	# Delete a record
+	c.execute('DELETE from adresses WHERE oid = ' + str(delete_box.get()))
+
+	# Commit changes
+	connection.commit()
+
+	# Close connection
+	connection.close()
+
 # Create submit function to database
 def submit():
 	# Create or connect
@@ -67,10 +84,10 @@ def query():
 	# Loop thru result
 	print_records = ''
 	for record in records:
-		print_records += str(record[0]) + ' ' + str(record[1]) + '\n'
+		print_records += str(record[6]) + '. ' + str(record[0]) + ' ' + str(record[1]) + '\n'
 
 	query_lbl = tk.Label(root, text = print_records)
-	query_lbl.grid(row = 8, column = 0, columnspan = 2)
+	query_lbl.grid(row = 10, column = 0, columnspan = 2)
 
 	# Commit changes
 	connection.commit()
@@ -81,45 +98,35 @@ def query():
 
 # Create textboxes
 f_name = tk.Entry(root, width = 30)
-f_name.grid(row = 0, column = 1, padx = 20)
-
-
+f_name.grid(row = 0, column = 1, padx = 20, pady = (10, 0))
 l_name = tk.Entry(root, width = 30)
 l_name.grid(row = 1, column = 1)
-
-
 adress = tk.Entry(root, width = 30)
 adress.grid(row = 2, column = 1)
-
-
 city = tk.Entry(root, width = 30)
 city.grid(row = 3, column = 1)
-
-
 state = tk.Entry(root, width = 30)
 state.grid(row = 4, column = 1)
-
-# Create Textbox labels
 zipcode = tk.Entry(root, width = 30)
 zipcode.grid(row = 5, column = 1)
+delete_box = tk.Entry(root, width = 30)
+delete_box.grid(row = 8, column = 1, pady = 5)
 
+# Create Textbox labels
 f_name_label = tk.Label(root, text = 'First Name')
-f_name_label.grid(row = 0, column = 0)
-
+f_name_label.grid(row = 0, column = 0, pady = (10, 0))
 l_name_label = tk.Label(root, text = 'Last Name')
 l_name_label.grid(row = 1, column = 0)
-
 adress_label = tk.Label(root, text = 'Adress')
 adress_label.grid(row = 2, column = 0)
-
 city_label = tk.Label(root, text = 'City')
 city_label.grid(row = 3, column = 0)
-
 state_label = tk.Label(root, text = 'State')
 state_label.grid(row = 4, column = 0)
-
 zipcode_label = tk.Label(root, text = 'Zipcode')
 zipcode_label.grid(row = 5, column = 0)
+delete_box_label = tk.Label(root, text = 'Delete ID')
+delete_box_label.grid(row = 8, column = 0, pady = 5)
 
 # Create Submit Button
 submit_btn = tk.Button(root, text = 'Add Record To Database', command = submit)
@@ -128,6 +135,10 @@ submit_btn.grid(row = 6, column = 0, columnspan = 2, padx = 10, pady = 10, ipadx
 # Create query button
 query_btn = tk.Button(root, text = 'Show Records', command = query)
 query_btn.grid(row = 7, column = 0, columnspan = 2, padx = 10, pady = 10, ipadx = 131)
+
+# Create delete button
+delete_btn = tk.Button(root, text = 'Delete Record', command = delete)
+delete_btn.grid(row =9, column = 0, columnspan = 2, padx = 10, pady = 10, ipadx = 131)
 
 
 root.mainloop()
