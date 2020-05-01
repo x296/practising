@@ -32,6 +32,7 @@ def solving_equations(second_number):
 
 def button_click(number):
 	global is_operation
+	button_AC['text'] = 'C'
 	if not(is_operation):
 		inputField.insert(END, number)
 	else:
@@ -53,7 +54,18 @@ def button_insert(sign):
 			inputField.insert(0, sign)
 
 def button_clear():
-	inputField.delete(0, END)
+	global math
+	global f_num
+	global is_operation
+	if button_AC['text'] == 'AC':
+		math = ''
+		f_num = None
+		is_operation = False
+		inputField.delete(0, END)
+
+	elif button_AC['text'] == 'C':
+		button_AC['text'] = 'AC'
+		inputField.delete(0, END)
 
 def button_add():
 	first_number = inputField.get()
@@ -92,13 +104,13 @@ def button_divide():
 	f_num = float(first_number)
 
 def button_percentage():
-	input_number = inputField.get()
+	input_number = float(inputField.get())
 	if f_num == None:
 		inputField.delete(0, END)
-		inputField.insert(0, float_or_int(input_number) / 100)
+		inputField.insert(0, float_or_int(input_number / 100))
 	else:
 		inputField.delete(0, END)
-		inputField.insert(0, f_num * (float_or_int(input_number) / 100))
+		inputField.insert(0, float_or_int(f_num * (input_number / 100)))
 
 def button_equal():
 	if math == '':
@@ -125,7 +137,7 @@ button_9 = Button(root, text = '9', width = 7, height = 3, command = lambda: but
 
 button_coma = Button(root, text = ',', width = 7, height = 3, command = lambda: button_insert('.'))
 button_plusMinus = Button(root, text = '+/-', width = 7, height = 3, command = lambda: button_insert('-'))
-button_AC = Button(root, text = 'C/AC', width = 7, height = 3, command = button_clear)
+button_AC = Button(root, text = 'AC', width = 7, height = 3, command = button_clear)
 button_add = Button(root, text = '+', width = 7, height = 3, command = button_add)
 button_substract = Button(root, text = '-', width = 7, height = 3, command = button_substract)
 button_multiply = Button(root, text = '*', width = 7, height = 3, command = button_multiply)
@@ -159,5 +171,6 @@ button_add.grid(row = 4, column = 3)
 button_0.grid(row = 5, column = 0, columnspan = 2)
 button_coma.grid(row = 5, column = 2)
 button_equal.grid(row = 5, column = 3)
+
 
 root.mainloop()
