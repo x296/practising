@@ -122,7 +122,7 @@ class Application(tk.Frame):
 		filename = path_filename[path_filename.rfind('/')+1:]
 		self.ytFile.streams.filter(adaptive=True, mime_type='video/mp4', fps=30).order_by('resolution')[-1-i].download(output_path=path, filename='video')
 		self.ytFile.streams.filter(adaptive=True, mime_type='audio/mp4').order_by('abr')[-1].download(output_path=path, filename='audio')
-		os.system('ffmpeg -i {} -i {} -c copy {}'.format(path+'/video.mp4', path+'/audio.mp4', path+'/'+self.creating_output_filename(filename)))
+		os.system('ffmpeg -i {} -i {} -c copy -y {}'.format(path+'/video.mp4', path+'/audio.mp4', path+'/'+self.creating_output_filename(filename)))
 		os.system('rm {} {}'.format(path+'/video.mp4', path+'/audio.mp4'))
 
 	def download_audio(self, *event):
@@ -130,7 +130,7 @@ class Application(tk.Frame):
 		path = path_filename[:path_filename.rfind('/')]
 		filename = path_filename[path_filename.rfind('/')+1:]
 		self.ytFile.streams.filter(adaptive=True, mime_type='audio/mp4').order_by('abr')[-1].download(output_path=path, filename='audio')
-		os.system('ffmpeg -i {} {}'.format(path+'/audio.mp4', path+'/'+self.creating_output_filename(filename)))
+		os.system('ffmpeg -i {} -ab 128k -y {}'.format(path+'/audio.mp4', path+'/'+self.creating_output_filename(filename)))
 		os.system('rm {}'.format(path+'/audio.mp4'))
 
 	# Creating other funcs for app
